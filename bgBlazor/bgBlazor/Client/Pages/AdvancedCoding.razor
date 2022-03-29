@@ -1,0 +1,38 @@
+﻿@page "/AdvancedCoding/{PageParam1:int}"
+
+<Header></Header>
+
+<h3>AdvancedCoding</h3>
+
+@OutputText
+<div>
+    @if (PageParam1 == 2)
+    {
+        <button hidden>test</button>
+    }
+    else
+    {    
+        <button>Tilmeld</button>
+    }
+</div>
+
+
+@code {
+    [Parameter] public int PageParam1 { get; set; }
+
+    public string? OutputText { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (PageParam1 == 2)
+        {
+            OutputText = "Kort tekst om Advanced coding";
+        }
+        else
+        {
+            OutputText = "Advanced coding is a way of using advanced features like arrays, classes, objects, and structures to write your own unique program. This type of coding requires a lot of practice and knowledge before you are able to make something useful.";
+        }
+
+        base.OnParametersSet();
+    }
+}

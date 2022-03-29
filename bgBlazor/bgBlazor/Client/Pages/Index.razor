@@ -1,0 +1,18 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<Header></Header>
+
+<p>Beskrivelse af hvorledes TEC tilbyder Blazor som valgfag</p>
+
+<p>
+    <a href="/SimpleCoding/@SimpleParam1" @onclick="ShowLongSimple">Simplecoding</a>
+    <a href="/AdvancedCoding/@AdvancedParam1" @onclick="ShowLongAdvanced">Advancedcoding</a>
+</p>
+
+<div style="width:60%;box-shadow: 0px 0px 2px black;margin: 0 auto;">
+    <input type="button" value="Simplecoding" style="width:48%;" @onclick="ShowSimpleCoding"/>
+    <input type="button" value="Advancedcoding" style="width:48%;" @onclick="ShowAdvancedCoding"/>
+    @DynamicContent
+</div>

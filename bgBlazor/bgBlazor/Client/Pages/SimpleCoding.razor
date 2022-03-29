@@ -1,0 +1,39 @@
+﻿@page "/SimpleCoding/{PageParam1:int}"
+
+<Header></Header>
+
+<h3>SimpleCoding</h3>
+
+@OutputText
+<div>
+    @if (PageParam1 == 0)
+    {
+        <button hidden>test</button>
+    }
+    else
+    {    
+        <button>Tilmeld</button>
+    }
+</div>
+
+@code {
+    [Parameter] public int PageParam1 { get; set; }
+
+    public string? OutputText { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        if (PageParam1 == 0)
+        {
+            OutputText = "Kort tekst om Simple coding";
+
+        }
+        else
+        {
+            OutputText = "Simple coding is a way of writing code that allows you to use variables, loops, functions, and other programming elements. This type of coding is easy to understand and can be used to create many different types of programs.";
+        }
+
+        base.OnParametersSet();
+    }
+
+}
