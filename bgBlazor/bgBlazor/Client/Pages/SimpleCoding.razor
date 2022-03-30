@@ -1,6 +1,12 @@
 ﻿@page "/SimpleCoding/{PageParam1:int}"
 
-<Header></Header>
+@if (PageParam1 == 0)
+{
+}
+else
+{
+    <Header/>
+}
 
 <h3>SimpleCoding</h3>
 

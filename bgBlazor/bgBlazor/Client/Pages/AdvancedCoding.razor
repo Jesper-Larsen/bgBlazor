@@ -1,6 +1,12 @@
 ﻿@page "/AdvancedCoding/{PageParam1:int}"
 
-<Header></Header>
+@if (PageParam1 == 2)
+{
+}
+else
+{
+    <Header/>
+}
 
 <h3>AdvancedCoding</h3>
 
@@ -16,7 +22,6 @@
         </div>
     }
 </div>
-
 
 @code {
     [Parameter] public int PageParam1 { get; set; }
