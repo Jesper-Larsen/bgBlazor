@@ -12,7 +12,7 @@
 </p>
 
 <div style="width:60%;box-shadow: 0px 0px 2px black;margin: 0 auto;">
-    <input type="button" value="Simplecoding" style="width:48%;" @onclick="ShowSimpleCoding"/>
-    <input type="button" value="Advancedcoding" style="width:48%;" @onclick="ShowAdvancedCoding"/>
+    <input type="button" value="Simplecoding" style="width:48%;" @onclick='()=>ShowCoding("Simple")' />
+    <input type="button" value="Advancedcoding" style="width:48%;" @onclick='()=>ShowCoding("Advanced")'/>
     @DynamicContent
 </div>

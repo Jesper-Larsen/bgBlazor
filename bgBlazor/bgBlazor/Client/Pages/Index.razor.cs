@@ -30,8 +30,22 @@ namespace bgBlazor.Client.Pages
             SimpleParam1 = 0;
             AdvancedParam1 = 2;
 
-            ShowSimpleCoding();
+            // ShowSimpleCoding();
+
+            ShowCoding();
             base.OnInitialized();
+        }
+
+        private void ShowCoding(string? type = null)
+        {
+            if (type == "Advanced")
+            {
+                ShowAdvancedCoding();
+            }
+            else
+            {
+                ShowSimpleCoding();
+            }
         }
 
         private void ShowSimpleCoding()
