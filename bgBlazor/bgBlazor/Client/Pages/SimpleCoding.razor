@@ -8,16 +8,18 @@
 <div>
     @if (PageParam1 == 0)
     {
-        <button hidden>test</button>
     }
     else
     {    
-        <button>Tilmeld</button>
+        <div>
+         <a href="/Tilmeld/@TilmeldType" @onclick="FromSimple">Tilmeld</a>
+        </div>
     }
 </div>
 
 @code {
     [Parameter] public int PageParam1 { get; set; }
+    public string? TilmeldType { get; set; }
 
     public string? OutputText { get; set; }
 
@@ -34,6 +36,12 @@
         }
 
         base.OnParametersSet();
+    }
+
+    private void FromSimple()
+    {
+        TilmeldType = "Grundlæggende";
+
     }
 
 }

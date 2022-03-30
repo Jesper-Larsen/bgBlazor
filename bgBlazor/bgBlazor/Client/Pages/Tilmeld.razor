@@ -1,11 +1,60 @@
-﻿@page "/Tilmeld/"
+﻿@page "/Tilmeld/{PageParam2}"
+@using bgBlazor.Shared.Models;
+@inject HttpClient _httpClient;
+@inject NavigationManager NavManager;
 
 <Header></Header>
 
 <h3>Tilmeld</h3>
-
+@if (Elever != null)
+{
+<div>
+    <label>Fornavn</label>
+    <input type="text" @bind="Elever.Fornavn"/>
+</div>
+<div>
+    <label>Efternavn</label>
+    <input type="text" @bind="Elever.Efternavn"/>
+</div>
+<div>
+<button @onclick="TilmeldPerson">Tilmeld</button>
+</div>
+<div>
+    <label>@Tilmeldt</label>
+</div>
+}
 
 
 @code {
+    [Parameter] public string? PageParam2 { get; set; }
+
+    private Elever? Elever;
+
+    string Tilmeldt = "";
+
+    protected override void OnInitialized()
+    {
+        Elever = new Elever();
+        base.OnInitialized();
+    }
+
+    private async Task TilmeldPerson()
+    {
+
+        Elever elev = new Elever
+        {
+                Fornavn = Elever.Fornavn,
+                Efternavn = Elever.Efternavn,
+                KursusType = PageParam2
+        };
+        Tilmeldt = "Du er nu tilmeldt";
+        await _httpClient.PostAsJsonAsync("/api/Elevers", elev);
+
+        Thread.Sleep(2000);
+        NavManager.NavigateTo("/");
+
+
+
+    }
 
 }

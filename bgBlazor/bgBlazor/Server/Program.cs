@@ -1,4 +1,6 @@
+using bgBlazor.Server.Models;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+var connection = builder.Configuration.GetConnectionString("DBConnection");
+builder.Services.AddDbContext<bgBlazorContext>(options => options.UseSqlServer(connection));
 
 var app = builder.Build();
 
